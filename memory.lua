@@ -33,6 +33,34 @@ local function printPositions(objects, name)
     end
 end
 
+-- Function to teleport the player to the first soccer ball or server soccer ball position
+function teleportPlayer()
+    -- Get the server soccer ball using findChild method
+    local serverSoccerBalls = findChildren("FootballField.ServerSoccerBall")
+    if #serverSoccerBalls > 0 then
+        -- Teleport the player to the server soccer ball position
+        game.Players.LocalPlayer.Character:MoveTo(serverSoccerBalls[1].Position)
+        print("Player teleported to Server Soccer Ball.")
+    else
+        -- Get all soccer balls using findChildren method
+        local soccerBalls1 = findChildren("FootballField.SoccerBall")
+        local soccerBalls2 = findChildren("FootballField2.SoccerBall2")
+
+        -- Check if there's at least one soccer ball
+        if #soccerBalls1 > 0 then
+            -- Teleport the player to the first soccer ball position
+            game.Players.LocalPlayer.Character:MoveTo(soccerBalls1[1].Position)
+            print("Player teleported to Soccer Ball 1.")
+        elseif #soccerBalls2 > 0 then
+            -- Teleport the player to the first soccer ball position in the second field
+            game.Players.LocalPlayer.Character:MoveTo(soccerBalls2[1].Position)
+            print("Player teleported to Soccer Ball 2.")
+        else
+            print("No soccer balls found.")
+        end
+    end
+end
+
 -- Get all soccer balls using findChildren method
 local serverSoccerBalls = findChildren("FootballField.ServerSoccerBall")
 local soccerBalls1 = findChildren("FootballField.SoccerBall")
