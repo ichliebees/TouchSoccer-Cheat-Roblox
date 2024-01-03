@@ -30,6 +30,13 @@ local soccerBall2 = findChild("FootballField2.SoccerBall2")
 -- Print positions or messages
 print("========== WA Memory Loaded Successfully! ==========")
 printPosition(serverSoccerBall, "Server Soccer Ball")
-printPosition(soccerBall1, "Soccer Ball 1")
+
+-- Check if SoccerBall exists as a descendant under FootballField
+local soccerBall1Path = "FootballField.SoccerBall"
+local soccerBall1Parent = findChild("FootballField")
+local soccerBall1Descendant = soccerBall1Parent and soccerBall1Parent:FindFirstChild(soccerBall1Path)
+
+printPosition(soccerBall1Descendant, "Soccer Ball 1")
+
 printPosition(soccerBall2, "Soccer Ball 2")
 print("=====================================================")
